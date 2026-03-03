@@ -1,0 +1,425 @@
+#mixed-port: 7890
+allow-lan: false
+#bind-address: '*'
+mode: rule
+#log-level: info
+ipv6: false
+#external-controller: 127.0.0.1:9090
+
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+  dns-hijack:
+    - any:53
+
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  use-hosts: true
+  ipv6: false 
+  default-nameserver:
+    - 1.12.12.12
+    - 223.5.5.5
+  enhanced-mode: fake-ip       # redir-host
+  fake-ip-range: 198.18.0.1/16         # Fake IP addresses pool CIDR
+  fake-ip-filter:
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - '+.stun.*.*.*.*.*'
+    - '*.n.n.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.*.microsoft.com'
+    - '*.*.xboxlive.com'
+    - '*.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'WORKGROUP'
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+    - https://1.1.1.1/dns-query
+    - 8.8.8.8
+  nameserver-policy:
+  'geosite:cn': https://dns.alidns.com/dns-query      # 中国域名用阿里DNS
+  '+.apple.com': https://doh.pub/dns-query          # Apple用公共DoH
+  fallback:
+    - tls://h2o.apad.pro
+    - tls://cn-a.iqiqz.com
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+    - https://cn-a.iqiqz.com/dns-query
+    - https://h2o.apad.pro/dns-query
+    - https://doh.apad.pro/dns-query 
+    - https://ipv4.apad.pro/dns-query
+    - https://1.1.1.1/dns-query
+    #- tls://hk.lele233.cn:853
+    #- tls://pdns.itxe.net:853
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+      - 10.0.0.0/8
+      - 172.16.0.0/12
+      - 192.168.0.0/16
+
+proxies:
+
+  - name: "teda.cf"
+    type: vmess
+    server: teda.cf
+    port: 443
+    uuid: 96530de6-f90d-47bd-b989-f84b7c23b3e2
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: teda.cf
+    network: ws
+    ws-opts:
+      path: /ccbde1/
+      headers:
+        Host: teda.cf
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
+
+
+  - name: "mipay.gq"
+    type: vmess
+    server: mipay.gq
+    port: 443
+    uuid: 5d8f2484-4699-4fd5-bb33-fe07f3ddef3e
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: mipay.gq
+    network: ws
+    ws-opts:
+      path: /ed2ac445/
+      headers:
+        Host: mipay.gq
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
+    
+
+  - name: "Oracle-4C24G"
+    type: vmess
+    server: hulu.gq
+    port: 443
+    uuid: 77c89a3b-d318-4e07-a10e-fb5ee3a1661d
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: hulu.gq
+    network: ws
+    ws-opts:
+      path: /d93d6e4ec04/
+      headers:
+        Host: hulu.gq
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol  
+
+
+  - name: "HostSailor_yaya.cf"
+    type: vmess
+    server: yaya.cf
+    port: 443
+    uuid: 62235cc7-a676-49c6-b6b9-2c77003c6b78
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: yaya.cf
+    network: ws
+    ws-opts:
+      path: /78b6545c0ab27a/
+      headers:
+        Host: yaya.cf
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
+
+
+    
+
+
+
+proxy-groups: 
+
+  - name: "AUTO"
+    type: url-test
+    proxies:
+      - teda.cf
+      - mipay.gq
+      - Oracle-4C24G
+      - HostSailor_yaya.cf
+
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+
+  - name: "PROXY"
+    type: select
+    proxies:
+      - AUTO
+      - teda.cf
+      - mipay.gq
+      - Oracle-4C24G
+      - HostSailor_yaya.cf
+
+      
+  - name: "MATCH"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+     
+  - name: "Netflix"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+      
+  - name: "Disney"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT 
+      
+  - name: "Spotify"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+      
+  - name: "Twitter"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT    
+      
+  - name: "Apple"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+
+  - name: "Icloud"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+      
+  - name: "Telegram"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+           
+  - name: "Microsoft"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT  
+      
+  - name: "Steam"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT  
+      
+  - name: "PayPal"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT  
+      
+  - name: "Discord"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT  
+
+  - name: "Emby"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT 
+
+  - name: "YouTube"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+
+
+
+
+
+rule-providers: 
+  Lan:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Lan.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/Rulesets/Clash/Basic/LAN.yaml
+    interval: 86400  
+   
+  Steam:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Steam.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Game/Steam.yaml
+    interval: 86400
+  
+  Telegram:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Telegram.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Telegram.yaml
+    interval: 86400
+    
+  Twitter:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Twitter.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Twitter.yaml
+    interval: 86400  
+    
+  PayPal:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/PayPal.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/HengLiu2282/DivineEngine/master/Clash/RuleSet/Extra/PayPal.yaml
+    interval: 86400
+
+  Icloud:
+    type: http
+    behavior: domain
+    url: "https://webproxy.888989.xyz/proxy51561020205/https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/iCloud/iCloud.yaml"
+    path: ./RuleSet/Extra/Icloud.yaml
+    interval: 86400
+
+  Apple:
+    type: http
+    behavior: domain
+    url: "https://webproxy.888989.xyz/proxy51561020205/https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Apple/Apple.yaml"
+    path: ./RuleSet/Extra/Apple.yaml
+    interval: 86400
+
+  Disney:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Disney.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Disney.yaml
+    interval: 86400
+
+  Netflix:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Netflix.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Netflix.yaml
+    interval: 86400
+
+  Spotify:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Spotify.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Spotify.yaml
+    interval: 86400
+
+  Discord:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Discord.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://github.com/LM-Firefly/Rules/raw/master/Clash-RuleSet-Classical/PROXY/Discord.yaml
+    interval: 86400    
+
+  Microsoft:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/Microsoft.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Microsoft.yaml
+    interval: 86400
+  
+  YouTube:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Extra/YouTube.yaml
+    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/refs/heads/master/Clash-RuleSet-Classical/Global-Services/YouTube.yaml
+    interval: 86400
+
+
+  Emby:
+    type: http
+    behavior: classical
+    path: ./Ruleset/Extra/normal_rules.list
+    url: https://zeroningyg.github.io/claruvis/normal_rules.list
+    interval: 86400
+    format: text
+    
+
+  ban JP&CN_rules:
+    url: https://zeroningyg.github.io/claruvis/ban JP&CN_rules.list
+    path: ./Ruleset/Extra/ban JP&CN_rules.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  cn_direct:
+    url: https://zeroningyg.github.io/claruvis/cn_direct.list
+    path: ./Ruleset/Extra/cn_direct.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+
+
+rules: 
+  
+  - RULE-SET,Lan,DIRECT
+  - GEOIP,LAN,DIRECT
+  - GEOIP,private,DIRECT
+
+  - RULE-SET,Steam,Steam
+  - RULE-SET,Microsoft,Microsoft
+  - RULE-SET,Discord,Discord
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Twitter,Twitter
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Disney,Disney
+  - RULE-SET,Icloud,Icloud
+  - RULE-SET,Apple,Apple
+  - RULE-SET,PayPal,PayPal
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,YouTube,YouTube
+
+
+  - DOMAIN,synology.com,DIRECT
+ 
+  - DOMAIN,translate.googleapis.com,PROXY
+  - DOMAIN-KEYWORD,live.com,DIRECT
+  - DOMAIN-KEYWORD,live.net,DIRECT
+
+
+  
+  # GeoIP China
+  - GEOIP,private,DIRECT
+  - GEOIP,CN,DIRECT
+
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+
+  - MATCH,MATCH
