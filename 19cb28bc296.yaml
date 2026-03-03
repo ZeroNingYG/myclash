@@ -73,6 +73,25 @@ dns:
 
 proxies:
 
+  - name: "ION"
+    type: vmess
+    server: ning.tk
+    port: 443
+    uuid: 879f8f48-5f8a-49dd-a045-443ac2730868
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: ning.tk
+    network: ws
+    ws-opts:
+      path: /2ae72a7991293f/
+      headers:
+        Host: ning.tk
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
+
   - name: "teda.cf"
     type: vmess
     server: teda.cf
@@ -162,6 +181,7 @@ proxy-groups:
   - name: "AUTO"
     type: url-test
     proxies:
+      - ION
       - teda.cf
       - mipay.gq
       - Oracle-4C24G
@@ -174,6 +194,7 @@ proxy-groups:
     type: select
     proxies:
       - AUTO
+      - ION
       - teda.cf
       - mipay.gq
       - Oracle-4C24G
@@ -421,5 +442,6 @@ rules:
   - GEOIP,CN,DIRECT
 
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+
 
   - MATCH,MATCH
