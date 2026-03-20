@@ -92,84 +92,36 @@ proxies:
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "teda.cf"
-    type: vmess
-    server: teda.cf
-    port: 443
-    uuid: 96530de6-f90d-47bd-b989-f84b7c23b3e2
-    alterId: 0
-    cipher: aes-128-gcm
+  - name: "teda.cf_reality"                  # 可以自定义节点名称
+    type: vless
+    server: 140.238.39.71                            # 解析的域名或IP
+    port: 2233                                 # 自定义端口
+    uuid: 214a7503-c1f9-4f0b-bc4e-d51407ad7571   # 自定义 UUID
+    network: tcp
     udp: true
     tls: true
-    skip-cert-verify: false
-    servername: teda.cf
-    network: ws
-    ws-opts:
-      path: /ccbde1/
-      headers:
-        Host: teda.cf
-      #max-early-data: 2048
-      #early-data-header-name: Sec-WebSocket-Protocol
+    flow: xtls-rprx-vision
+    servername: www.apple.com                      # 自定义回落域名
+    reality-opts: 
+      public-key: 4BtKI1jjYZwDCur76gQ6x-xeH-yTl5Bfsk0KYK0oYxw    # Reality public-key
+      short-id:   ""                     
+    client-fingerprint: chrome
 
 
-  - name: "mipay.gq"
-    type: vmess
-    server: mipay.gq
-    port: 443
-    uuid: 5d8f2484-4699-4fd5-bb33-fe07f3ddef3e
-    alterId: 0
-    cipher: aes-128-gcm
+  - name: "HostSailor_reality"                  # 可以自定义节点名称
+    type: vless
+    server: 185.183.98.8                           # 解析的域名或IP
+    port: 2233                                 # 自定义端口
+    uuid: 4abc6704-55f6-456f-8e8c-5da857fa1c8c   # 自定义 UUID
+    network: tcp
     udp: true
     tls: true
-    skip-cert-verify: false
-    servername: mipay.gq
-    network: ws
-    ws-opts:
-      path: /ed2ac445/
-      headers:
-        Host: mipay.gq
-      #max-early-data: 2048
-      #early-data-header-name: Sec-WebSocket-Protocol
-    
-
-  - name: "Oracle-4C24G"
-    type: vmess
-    server: hulu.gq
-    port: 443
-    uuid: 77c89a3b-d318-4e07-a10e-fb5ee3a1661d
-    alterId: 0
-    cipher: aes-128-gcm
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    servername: hulu.gq
-    network: ws
-    ws-opts:
-      path: /d93d6e4ec04/
-      headers:
-        Host: hulu.gq
-      #max-early-data: 2048
-      #early-data-header-name: Sec-WebSocket-Protocol  
-
-
-  - name: "HostSailor_yaya.cf"
-    type: vmess
-    server: yaya.cf
-    port: 443
-    uuid: 62235cc7-a676-49c6-b6b9-2c77003c6b78
-    alterId: 0
-    cipher: aes-128-gcm
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    servername: yaya.cf
-    network: ws
-    ws-opts:
-      path: /78b6545c0ab27a/
-      headers:
-        Host: yaya.cf
-      #max-early-data: 2048
-      #early-data-header-name: Sec-WebSocket-Protocol
+    flow: xtls-rprx-vision
+    servername: www.apple.com                      # 自定义回落域名
+    reality-opts: 
+      public-key: 6P46-n0indCQjDDgWVjF6COG1YPZMMH01PsNQSrUC0E    # Reality public-key
+      short-id:   ""                     
+    client-fingerprint: chrome 
 
 
     
@@ -182,10 +134,9 @@ proxy-groups:
     type: url-test
     proxies:
       - ION
-      - teda.cf
-      - mipay.gq
-      - Oracle-4C24G
-      - HostSailor_yaya.cf
+      - teda.cf_reality
+      - HostSailor_reality
+      
 
     url: https://www.gstatic.com/generate_204
     interval: 300
@@ -195,10 +146,9 @@ proxy-groups:
     proxies:
       - AUTO
       - ION
-      - teda.cf
-      - mipay.gq
-      - Oracle-4C24G
-      - HostSailor_yaya.cf
+      - teda.cf_reality
+      - HostSailor_reality
+      
 
       
   - name: "MATCH"
