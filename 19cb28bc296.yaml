@@ -155,8 +155,7 @@ proxies:
       path: "/f6f8501439cd"
       headers:
         Host: jjflyvless.tunnels.us.ci
-    max-early-data: 0
-    client-fingerprint: chrome
+ 
 
   - name: "jjfly-移动优选-VLESS-WS"
     type: vless
@@ -173,8 +172,7 @@ proxies:
       path: "/f6f8501439cd"
       headers:
         Host: jjflyvless.tunnels.us.ci
-    max-early-data: 0
-    client-fingerprint: chrome
+
 
 
     
