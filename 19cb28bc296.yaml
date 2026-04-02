@@ -138,14 +138,7 @@ proxies:
       path: "/f6f8501439cd"
       headers:
         Host: jjflyvless.tunnels.us.ci
-    # 以下参数提升 WS 长连接稳定性（推荐）
-    dialer-proxy: ""
-    udp-over-tcp: false
-    # 心跳与超时优化
-    max-early-data: 0
-    early-data-header-name: ""
-    # 额外增强稳定性（Meta 内核支持）
-    # client-fingerprint: chrome
+
 
   - name: "jjfly-联通优选-VLESS-WS"
     type: vless
