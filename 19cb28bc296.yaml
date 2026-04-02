@@ -147,6 +147,42 @@ proxies:
     # 额外增强稳定性（Meta 内核支持）
     client-fingerprint: chrome
 
+  - name: "jjfly-联通优选-VLESS-WS"
+    type: vless
+    server: 104.16.160.10          # 联通常用优选段（圣何塞/洛杉矶线路）
+    port: 443
+    uuid: 4deda567-cd76-4ff8-e67f-39636dbcd7e7
+    network: ws
+    tls: true
+    udp: true
+    skip-cert-verify: false
+    servername: jjflyvless.tunnels.us.ci
+    fingerprint: chrome
+    ws-opts:
+      path: "/f6f8501439cd"
+      headers:
+        Host: jjflyvless.tunnels.us.ci
+    max-early-data: 0
+    client-fingerprint: chrome
+
+  - name: "jjfly-移动优选-VLESS-WS"
+    type: vless
+    server: 172.64.32.10           # 移动常用优选段（香港/新加坡线路）
+    port: 443
+    uuid: 4deda567-cd76-4ff8-e67f-39636dbcd7e7
+    network: ws
+    tls: true
+    udp: true
+    skip-cert-verify: false
+    servername: jjflyvless.tunnels.us.ci
+    fingerprint: chrome
+    ws-opts:
+      path: "/f6f8501439cd"
+      headers:
+        Host: jjflyvless.tunnels.us.ci
+    max-early-data: 0
+    client-fingerprint: chrome
+
 
     
 
@@ -161,6 +197,8 @@ proxy-groups:
       - teda.cf_reality
       - HostSailor_reality
       - jjfly-电信优选-VLESS-WS
+      - jjfly-联通优选-VLESS-WS
+      - jjfly-移动优选-VLESS-WS
       
 
     url: https://www.gstatic.com/generate_204
@@ -174,6 +212,8 @@ proxy-groups:
       - teda.cf_reality
       - HostSailor_reality
       - jjfly-电信优选-VLESS-WS
+      - jjfly-联通优选-VLESS-WS
+      - jjfly-移动优选-VLESS-WS
       
 
       
