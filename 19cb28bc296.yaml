@@ -123,6 +123,30 @@ proxies:
       short-id:   ""                     
     client-fingerprint: chrome 
 
+  - name: "jjfly-电信优选-VLESS-WS"
+    type: vless
+    server: 162.159.45.225
+    port: 443
+    uuid: 4deda567-cd76-4ff8-e67f-39636dbcd7e7
+    network: ws
+    tls: true
+    udp: true
+    skip-cert-verify: false
+    servername: jjflyvless.tunnels.us.ci
+    fingerprint: chrome
+    ws-opts:
+      path: "/f6f8501439cd"
+      headers:
+        Host: jjflyvless.tunnels.us.ci
+    # 以下参数提升 WS 长连接稳定性（推荐）
+    dialer-proxy: ""
+    udp-over-tcp: false
+    # 心跳与超时优化
+    max-early-data: 0
+    early-data-header-name: ""
+    # 额外增强稳定性（Meta 内核支持）
+    client-fingerprint: chrome
+
 
     
 
@@ -136,6 +160,7 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
+      - jjfly-电信优选-VLESS-WS
       
 
     url: https://www.gstatic.com/generate_204
@@ -148,6 +173,7 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
+      - jjfly-电信优选-VLESS-WS
       
 
       
