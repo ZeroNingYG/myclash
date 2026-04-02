@@ -133,7 +133,7 @@ proxies:
     udp: true
     skip-cert-verify: false
     servername: jjflyvless.tunnels.us.ci
-    fingerprint: chrome
+    client-fingerprint: chrome
     ws-opts:
       path: "/f6f8501439cd"
       headers:
@@ -157,7 +157,7 @@ proxies:
     udp: true
     skip-cert-verify: false
     servername: jjflyvless.tunnels.us.ci
-    fingerprint: chrome
+    client-fingerprint: chrome
     ws-opts:
       path: "/f6f8501439cd"
       headers:
@@ -175,7 +175,7 @@ proxies:
     udp: true
     skip-cert-verify: false
     servername: jjflyvless.tunnels.us.ci
-    fingerprint: chrome
+    client-fingerprint: chrome
     ws-opts:
       path: "/f6f8501439cd"
       headers:
