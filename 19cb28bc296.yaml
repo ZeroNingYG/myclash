@@ -132,12 +132,12 @@ proxies:
     tls: true
     udp: true
     skip-cert-verify: false
-    servername: jjflyvless.tunnels.us.ci
+    servername: jjflyvless.terminal.ccwu.cc
     client-fingerprint: chrome
     ws-opts:
       path: "/f6f8501439cd"
       headers:
-        Host: jjflyvless.tunnels.us.ci
+        Host: jjflyvless.terminal.ccwu.cc
 
 
   - name: "jjfly-联通优选-VLESS-WS"
@@ -149,12 +149,12 @@ proxies:
     tls: true
     udp: true
     skip-cert-verify: false
-    servername: jjflyvless.tunnels.us.ci
+    servername: jjflyvless.terminal.ccwu.cc
     client-fingerprint: chrome
     ws-opts:
       path: "/f6f8501439cd"
       headers:
-        Host: jjflyvless.tunnels.us.ci
+        Host: jjflyvless.terminal.ccwu.cc
  
 
   - name: "jjfly-移动优选-VLESS-WS"
@@ -166,12 +166,12 @@ proxies:
     tls: true
     udp: true
     skip-cert-verify: false
-    servername: jjflyvless.tunnels.us.ci
+    servername: jjflyvless.terminal.ccwu.cc
     client-fingerprint: chrome
     ws-opts:
       path: "/f6f8501439cd"
       headers:
-        Host: jjflyvless.tunnels.us.ci
+        Host: jjflyvless.terminal.ccwu.cc
 
 
 
