@@ -173,6 +173,22 @@ proxies:
       headers:
         Host: jjflyvless.terminal.ccwu.cc
 
+  - name: "Turkey"
+    type: vless
+    server: ct.youxuan.bbroot.com           
+    port: 443
+    uuid: 1803003a-4822-4a0c-9073-4c0c16232dcb
+    network: ws
+    tls: true
+    udp: true
+    skip-cert-verify: false
+    servername: djjturkeyvless.terminal.ccwu.cc
+    client-fingerprint: chrome
+    ws-opts:
+      path: "/8WGiWzYZGt"
+      headers:
+        Host: djjturkeyvless.terminal.ccwu.cc
+
 
 
     
@@ -190,6 +206,7 @@ proxy-groups:
       - jjfly-电信优选-VLESS-WS
       - jjfly-联通优选-VLESS-WS
       - jjfly-移动优选-VLESS-WS
+      - Turkey
       
 
     url: https://www.gstatic.com/generate_204
@@ -205,6 +222,7 @@ proxy-groups:
       - jjfly-电信优选-VLESS-WS
       - jjfly-联通优选-VLESS-WS
       - jjfly-移动优选-VLESS-WS
+      - Turkey
       
 
       
