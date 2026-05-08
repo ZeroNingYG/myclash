@@ -203,10 +203,10 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
-      - jjfly-电信优选-VLESS-WS
-      - jjfly-联通优选-VLESS-WS
-      - jjfly-移动优选-VLESS-WS
-      - Turkey
+      #- jjfly-电信优选-VLESS-WS
+      #- jjfly-联通优选-VLESS-WS
+      #- jjfly-移动优选-VLESS-WS
+      #- Turkey
       
 
     url: https://www.gstatic.com/generate_204
@@ -219,10 +219,10 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
-      - jjfly-电信优选-VLESS-WS
-      - jjfly-联通优选-VLESS-WS
-      - jjfly-移动优选-VLESS-WS
-      - Turkey
+      #- jjfly-电信优选-VLESS-WS
+      #- jjfly-联通优选-VLESS-WS
+      #- jjfly-移动优选-VLESS-WS
+      #- Turkey
       
 
       
