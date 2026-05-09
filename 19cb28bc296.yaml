@@ -189,6 +189,21 @@ proxies:
       headers:
         Host: djjturkeyvless.terminal.ccwu.cc
 
+  - name: "rn-us-origin-vless"
+    type: vless
+    server: ct.youxuan.bbroot.com
+    port: 443
+    uuid: ffc67135-39fa-4ded-a68c-ab2d62a97657
+    network: ws
+    tls: true
+    udp: true
+    skip-cert-verify: false
+    servername: rnusoriginvless.terminal.ccwu.cc 
+    client-fingerprint: chrome
+    ws-opts:
+      path: "/e5cb5e21a3f7"
+      headers:
+        Host: rnusoriginvless.terminal.ccwu.cc
 
 
     
@@ -203,6 +218,7 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
+      - rn-us-origin-vless
       #- jjfly-电信优选-VLESS-WS
       #- jjfly-联通优选-VLESS-WS
       #- jjfly-移动优选-VLESS-WS
@@ -219,6 +235,7 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
+      - rn-us-origin-vless
       #- jjfly-电信优选-VLESS-WS
       #- jjfly-联通优选-VLESS-WS
       #- jjfly-移动优选-VLESS-WS
