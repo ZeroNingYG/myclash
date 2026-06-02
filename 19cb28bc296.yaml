@@ -123,87 +123,63 @@ proxies:
       short-id:   ""                     
     client-fingerprint: chrome 
 
-  - name: "jjfly-电信优选-VLESS-WS"
-    type: vless
-    server: 162.159.45.225
-    port: 443
-    uuid: 4deda567-cd76-4ff8-e67f-39636dbcd7e7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: false
-    servername: jjflyvless.terminal.ccwu.cc
-    client-fingerprint: chrome
-    ws-opts:
-      path: "/f6f8501439cd"
-      headers:
-        Host: jjflyvless.terminal.ccwu.cc
 
-
-  - name: "jjfly-联通优选-VLESS-WS"
-    type: vless
-    server: 104.16.160.10          # 联通常用优选段（圣何塞/洛杉矶线路）
+  - name: "teda.cf"
+    type: vmess
+    server: teda.cf
     port: 443
-    uuid: 4deda567-cd76-4ff8-e67f-39636dbcd7e7
-    network: ws
-    tls: true
+    uuid: 96530de6-f90d-47bd-b989-f84b7c23b3e2
+    alterId: 0
+    cipher: aes-128-gcm
     udp: true
+    tls: true
     skip-cert-verify: false
-    servername: jjflyvless.terminal.ccwu.cc
-    client-fingerprint: chrome
+    servername: teda.cf
+    network: ws
     ws-opts:
-      path: "/f6f8501439cd"
+      path: /ccbde1/
       headers:
-        Host: jjflyvless.terminal.ccwu.cc
- 
+        Host: teda.cf
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "jjfly-移动优选-VLESS-WS"
-    type: vless
-    server: 172.64.32.10           # 移动常用优选段（香港/新加坡线路）
+  - name: "mipay.gq"
+    type: vmess
+    server: mipay.gq
     port: 443
-    uuid: 4deda567-cd76-4ff8-e67f-39636dbcd7e7
-    network: ws
-    tls: true
+    uuid: 5d8f2484-4699-4fd5-bb33-fe07f3ddef3e
+    alterId: 0
+    cipher: aes-128-gcm
     udp: true
+    tls: true
     skip-cert-verify: false
-    servername: jjflyvless.terminal.ccwu.cc
-    client-fingerprint: chrome
+    servername: mipay.gq
+    network: ws
     ws-opts:
-      path: "/f6f8501439cd"
+      path: /ed2ac445/
       headers:
-        Host: jjflyvless.terminal.ccwu.cc
+        Host: mipay.gq
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "Turkey"
-    type: vless
-    server: ct.youxuan.bbroot.com           
+  - name: "Oracle-4C24G"
+    type: vmess
+    server: hulu.gq
     port: 443
-    uuid: 1803003a-4822-4a0c-9073-4c0c16232dcb
-    network: ws
-    tls: true
+    uuid: 77c89a3b-d318-4e07-a10e-fb5ee3a1661d
+    alterId: 0
+    cipher: aes-128-gcm
     udp: true
-    skip-cert-verify: false
-    servername: djjturkeyvless.terminal.ccwu.cc
-    client-fingerprint: chrome
-    ws-opts:
-      path: "/8WGiWzYZGt"
-      headers:
-        Host: djjturkeyvless.terminal.ccwu.cc
-
-  - name: "rn-us-origin-vless"
-    type: vless
-    server: ct.youxuan.bbroot.com
-    port: 443
-    uuid: ffc67135-39fa-4ded-a68c-ab2d62a97657
-    network: ws
     tls: true
-    udp: true
     skip-cert-verify: false
-    servername: rnusoriginvless.terminal.ccwu.cc 
-    client-fingerprint: chrome
+    servername: hulu.gq
+    network: ws
     ws-opts:
-      path: "/e5cb5e21a3f7"
+      path: /d93d6e4ec04/
       headers:
-        Host: rnusoriginvless.terminal.ccwu.cc
+        Host: hulu.gq
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol 
 
 
     
@@ -218,11 +194,10 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
-      - rn-us-origin-vless
-      #- jjfly-电信优选-VLESS-WS
-      #- jjfly-联通优选-VLESS-WS
-      #- jjfly-移动优选-VLESS-WS
-      #- Turkey
+      - teda.cf
+      - mipay.gq
+      - Oracle-4C24G
+      
       
 
     url: https://www.gstatic.com/generate_204
@@ -235,11 +210,10 @@ proxy-groups:
       - ION
       - teda.cf_reality
       - HostSailor_reality
-      - rn-us-origin-vless
-      #- jjfly-电信优选-VLESS-WS
-      #- jjfly-联通优选-VLESS-WS
-      #- jjfly-移动优选-VLESS-WS
-      #- Turkey
+      - teda.cf
+      - mipay.gq
+      - Oracle-4C24G
+  
       
 
       
