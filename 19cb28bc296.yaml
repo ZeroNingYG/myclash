@@ -73,24 +73,6 @@ dns:
 
 proxies:
 
-  - name: "ION"
-    type: vmess
-    server: ning.tk
-    port: 443
-    uuid: 879f8f48-5f8a-49dd-a045-443ac2730868
-    alterId: 0
-    cipher: aes-128-gcm
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    servername: ning.tk
-    network: ws
-    ws-opts:
-      path: /2ae72a7991293f/
-      headers:
-        Host: ning.tk
-      #max-early-data: 2048
-      #early-data-header-name: Sec-WebSocket-Protocol
 
   - name: "teda.cf_reality"                  # 可以自定义节点名称
     type: vless
@@ -143,7 +125,7 @@ proxies:
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "Youxuan-teda.cf"
+  - name: "YX-teda.cf"
     type: vmess
     server: ct.youxuan.bbroot.com
     port: 443
@@ -181,6 +163,29 @@ proxies:
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
+  - name: "YX_mipay.gq"
+    type: vmess
+    server: ct.youxuan.bbroot.com
+    port: 443
+    uuid: 5d8f2484-4699-4fd5-bb33-fe07f3ddef3e
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: mipay.gq
+    network: ws
+    ws-opts:
+      path: /ed2ac445/
+      headers:
+        Host: mipay.gq
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
+
+
+
+      
+
   - name: "Oracle-4C24G"
     type: vmess
     server: hulu.gq
@@ -210,11 +215,12 @@ proxy-groups:
   - name: "AUTO"
     type: url-test
     proxies:
-      - ION
       - teda.cf_reality
       - HostSailor_reality
       - teda.cf
+      - YX-teda.cf
       - mipay.gq
+      - YX_mipay.gq
       - Oracle-4C24G
       
       
@@ -226,11 +232,12 @@ proxy-groups:
     type: select
     proxies:
       - AUTO
-      - ION
       - teda.cf_reality
       - HostSailor_reality
       - teda.cf
+      - YX-teda.cf
       - mipay.gq
+      - YX_mipay.gq
       - Oracle-4C24G
   
       
