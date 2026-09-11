@@ -143,6 +143,25 @@ proxies:
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
+  - name: "Youxuan-teda.cf"
+    type: vmess
+    server: ct.youxuan.bbroot.com
+    port: 443
+    uuid: 96530de6-f90d-47bd-b989-f84b7c23b3e2
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: teda.cf
+    network: ws
+    ws-opts:
+      path: /ccbde1/
+      headers:
+        Host: teda.cf
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
+
   - name: "mipay.gq"
     type: vmess
     server: mipay.gq
