@@ -106,9 +106,9 @@ proxies:
     client-fingerprint: chrome 
 
 
-  - name: "teda.cf"
+  - name: "teda.eu.org"
     type: vmess
-    server: teda.cf
+    server: teda.eu.org
     port: 443
     uuid: 96530de6-f90d-47bd-b989-f84b7c23b3e2
     alterId: 0
@@ -116,16 +116,16 @@ proxies:
     udp: true
     tls: true
     skip-cert-verify: false
-    servername: teda.cf
+    servername: teda.eu.org
     network: ws
     ws-opts:
       path: /ccbde1/
       headers:
-        Host: teda.cf
+        Host: teda.eu.org
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "YX-teda.cf"
+  - name: "YX-teda-bbroot"
     type: vmess
     server: ct.youxuan.bbroot.com
     port: 443
@@ -135,18 +135,18 @@ proxies:
     udp: true
     tls: true
     skip-cert-verify: false
-    servername: teda.cf
+    servername: teda.eu.org
     network: ws
     ws-opts:
       path: /ccbde1/
       headers:
-        Host: teda.cf
+        Host: teda.eu.org
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "mipay.gq"
+  - name: "vagaa.eu.org"
     type: vmess
-    server: mipay.gq
+    server: vagaa.eu.org
     port: 443
     uuid: 5d8f2484-4699-4fd5-bb33-fe07f3ddef3e
     alterId: 0
@@ -154,16 +154,16 @@ proxies:
     udp: true
     tls: true
     skip-cert-verify: false
-    servername: mipay.gq
+    servername: vagaa.eu.org
     network: ws
     ws-opts:
       path: /ed2ac445/
       headers:
-        Host: mipay.gq
+        Host: vagaa.eu.org
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "YX_mipay.gq"
+  - name: "YX-vagaa-bbroot"
     type: vmess
     server: ct.youxuan.bbroot.com
     port: 443
@@ -173,12 +173,12 @@ proxies:
     udp: true
     tls: true
     skip-cert-verify: false
-    servername: mipay.gq
+    servername: vagaa.eu.org
     network: ws
     ws-opts:
       path: /ed2ac445/
       headers:
-        Host: mipay.gq
+        Host: vagaa.eu.org
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
@@ -217,10 +217,10 @@ proxy-groups:
     proxies:
       - teda.cf_reality
       - HostSailor_reality
-      - teda.cf
-      - YX-teda.cf
-      - mipay.gq
-      - YX_mipay.gq
+      - teda.eu.org
+      - YX-teda-bbroot
+      - vagaa.eu.org
+      - YX-vagaa-bbroot
       - Oracle-4C24G
       
       
@@ -234,10 +234,10 @@ proxy-groups:
       - AUTO
       - teda.cf_reality
       - HostSailor_reality
-      - teda.cf
-      - YX-teda.cf
-      - mipay.gq
-      - YX_mipay.gq
+      - teda.eu.org
+      - YX-teda-bbroot
+      - vagaa.eu.org
+      - YX-vagaa-bbroot
       - Oracle-4C24G
   
       
