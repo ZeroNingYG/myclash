@@ -1,10 +1,10 @@
-#mixed-port: 7890
+mixed-port: 7890
 allow-lan: false
-#bind-address: '*'
+bind-address: '*'
 mode: rule
-#log-level: info
+log-level: warning
 ipv6: false
-#external-controller: 127.0.0.1:9090
+external-controller: 127.0.0.1:9090
 
 tun:
   enable: true
@@ -22,8 +22,9 @@ dns:
   use-hosts: true
   ipv6: false 
   default-nameserver:
-    - 1.12.12.12
+    #- 1.12.12.12
     - 223.5.5.5
+    - 119.29.29.29
   enhanced-mode: fake-ip       # redir-host
   fake-ip-range: 198.18.0.1/16         # Fake IP addresses pool CIDR
   fake-ip-filter:
@@ -38,28 +39,35 @@ dns:
     - '*.msftncsi.com'
     - 'msftconnecttest.com'
     - 'WORKGROUP'
+    - "localhost.ptlogin2.qq.com"
+    - "+.qq.com"
+    - "+.tencent.com"
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://cloudflare-dns.com/dns-query
-    - https://dns.google/dns-query
-    - https://1.1.1.1/dns-query
-    - 8.8.8.8
+    #- https://doh.pub/dns-query
+    #- https://dns.alidns.com/dns-query
+    #- https://cloudflare-dns.com/dns-query
+    #- https://dns.google/dns-query
+    #- https://1.1.1.1/dns-query
+    #- 8.8.8.8
   nameserver-policy:
-  'geosite:cn': https://dns.alidns.com/dns-query      # 中国域名用阿里DNS
-  '+.apple.com': https://doh.pub/dns-query          # Apple用公共DoH
+  'geosite:cn': 
+    - https://dns.alidns.com/dns-query # 中国域名用阿里DNS
+    - https://doh.pub/dns-query
+  '+.apple.com': 
+    - https://doh.pub/dns-query          # Apple用公共DoH
   fallback:
-    - tls://h2o.apad.pro
-    - tls://cn-a.iqiqz.com
+    #- tls://h2o.apad.pro
+    #- tls://cn-a.iqiqz.com
     - tls://1.1.1.1:853
     - tls://8.8.8.8:853
-    - https://cn-a.iqiqz.com/dns-query
-    - https://h2o.apad.pro/dns-query
-    - https://doh.apad.pro/dns-query 
-    - https://ipv4.apad.pro/dns-query
+    #- https://cn-a.iqiqz.com/dns-query
+    #- https://h2o.apad.pro/dns-query
+    #- https://doh.apad.pro/dns-query 
+    #- https://ipv4.apad.pro/dns-query
     - https://1.1.1.1/dns-query
+    - https://dns.google/dns-query
     #- tls://hk.lele233.cn:853
     #- tls://pdns.itxe.net:853
   fallback-filter:
@@ -67,9 +75,10 @@ dns:
     geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
-      - 10.0.0.0/8
-      - 172.16.0.0/12
-      - 192.168.0.0/16
+      - 0.0.0.0/32
+      #- 10.0.0.0/8
+      #- 172.16.0.0/12
+      #- 192.168.0.0/16
 
 proxies:
 
@@ -336,48 +345,48 @@ rule-providers:
     type: http
     behavior: classical
     path: ./RuleSet/Lan.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/Rulesets/Clash/Basic/LAN.yaml
+    url: "https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/Rulesets/Clash/Basic/LAN.yaml"
     interval: 86400  
    
   Steam:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Steam.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Game/Steam.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Game/Steam.yaml"
     interval: 86400
   
   Telegram:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Telegram.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Telegram.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Telegram.yaml"
     interval: 86400
     
   Twitter:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Twitter.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Twitter.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Twitter.yaml"
     interval: 86400  
     
   PayPal:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/PayPal.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/HengLiu2282/DivineEngine/master/Clash/RuleSet/Extra/PayPal.yaml
+    url: "https://raw.githubusercontent.com/HengLiu2282/DivineEngine/master/Clash/RuleSet/Extra/PayPal.yaml"
     interval: 86400
 
   Icloud:
     type: http
     behavior: domain
-    url: "https://webproxy.888989.xyz/proxy51561020205/https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/iCloud/iCloud.yaml"
+    url: "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/iCloud/iCloud.yaml"
     path: ./RuleSet/Extra/Icloud.yaml
     interval: 86400
 
   Apple:
     type: http
     behavior: domain
-    url: "https://webproxy.888989.xyz/proxy51561020205/https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Apple/Apple.yaml"
+    url: "https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Apple/Apple.yaml"
     path: ./RuleSet/Extra/Apple.yaml
     interval: 86400
 
@@ -385,42 +394,42 @@ rule-providers:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Disney.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Disney.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Disney.yaml"
     interval: 86400
 
   Netflix:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Netflix.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Netflix.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Netflix.yaml"
     interval: 86400
 
   Spotify:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Spotify.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Spotify.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Global-Services/Spotify.yaml"
     interval: 86400
 
   Discord:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Discord.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://github.com/LM-Firefly/Rules/raw/master/Clash-RuleSet-Classical/PROXY/Discord.yaml
+    url: "https://github.com/LM-Firefly/Rules/raw/master/Clash-RuleSet-Classical/PROXY/Discord.yaml"
     interval: 86400    
 
   Microsoft:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/Microsoft.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Microsoft.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/Microsoft.yaml"
     interval: 86400
   
   YouTube:
     type: http
     behavior: classical
     path: ./RuleSet/Extra/YouTube.yaml
-    url: https://webproxy.888989.xyz/proxy51561020205/https://raw.githubusercontent.com/LM-Firefly/Rules/refs/heads/master/Clash-RuleSet-Classical/Global-Services/YouTube.yaml
+    url: "https://raw.githubusercontent.com/LM-Firefly/Rules/refs/heads/master/Clash-RuleSet-Classical/Global-Services/YouTube.yaml"
     interval: 86400
 
 
@@ -482,6 +491,7 @@ rules:
   # GeoIP China
   - GEOIP,private,DIRECT
   - GEOIP,CN,DIRECT
+  - GEOSITE,cn,DIRECT
 
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
 
