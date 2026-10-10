@@ -191,6 +191,25 @@ proxies:
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
+  - name: "Youxuan_sbsb_bbroot"
+    type: vmess
+    server: ct.youxuan.bbroot.com
+    port: 443
+    uuid: 47a633d5-4bda-4820-9ff7-4b5bd9c1fefd
+    alterId: 0
+    cipher: aes-128-gcm
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: sbsb.eu.org
+    network: ws
+    ws-opts:
+      path: /28b11/
+      headers:
+        Host: sbsb.eu.org
+      #max-early-data: 2048
+      #early-data-header-name: Sec-WebSocket-Protocol
+
 
 
       
@@ -230,7 +249,8 @@ proxy-groups:
       - YX-teda-bbroot
       - vagaa.eu.org
       - YX-vagaa-bbroot
-      - Oracle-4C24G
+      #- Oracle-4C24G
+      - Youxuan_sbsb_bbroot
       
       
 
@@ -247,7 +267,8 @@ proxy-groups:
       - YX-teda-bbroot
       - vagaa.eu.org
       - YX-vagaa-bbroot
-      - Oracle-4C24G
+      #- Oracle-4C24G
+      - Youxuan_sbsb_bbroot
   
       
 
