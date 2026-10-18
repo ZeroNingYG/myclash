@@ -136,7 +136,7 @@ proxies:
 
   - name: "YX-teda-bbroot"
     type: vmess
-    server: ct.youxuan.bbroot.com
+    server: ct.cf0002.embys.bbroot.com
     port: 443
     uuid: 96530de6-f90d-47bd-b989-f84b7c23b3e2
     alterId: 0
@@ -174,7 +174,7 @@ proxies:
 
   - name: "YX-vagaa-bbroot"
     type: vmess
-    server: ct.youxuan.bbroot.com
+    server: ct.cf0002.embys.bbroot.com
     port: 443
     uuid: 5d8f2484-4699-4fd5-bb33-fe07f3ddef3e
     alterId: 0
@@ -191,9 +191,9 @@ proxies:
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
-  - name: "Youxuan_sbsb_bbroot"
+  - name: "Youxuan_double_bbroot"
     type: vmess
-    server: ct.youxuan.bbroot.com
+    server: ct.cf0002.embys.bbroot.com
     port: 443
     uuid: 47a633d5-4bda-4820-9ff7-4b5bd9c1fefd
     alterId: 0
@@ -201,12 +201,12 @@ proxies:
     udp: true
     tls: true
     skip-cert-verify: false
-    servername: sbsb.eu.org
+    servername: double.eu.org
     network: ws
     ws-opts:
       path: /28b11/
       headers:
-        Host: sbsb.eu.org
+        Host: double.eu.org
       #max-early-data: 2048
       #early-data-header-name: Sec-WebSocket-Protocol
 
@@ -250,7 +250,7 @@ proxy-groups:
       - vagaa.eu.org
       - YX-vagaa-bbroot
       #- Oracle-4C24G
-      - Youxuan_sbsb_bbroot
+      - Youxuan_double_bbroot
       
       
 
@@ -268,7 +268,7 @@ proxy-groups:
       - vagaa.eu.org
       - YX-vagaa-bbroot
       #- Oracle-4C24G
-      - Youxuan_sbsb_bbroot
+      - Youxuan_double_bbroot
   
       
 
